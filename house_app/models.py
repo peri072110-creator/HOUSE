@@ -119,13 +119,13 @@ class PropertyDocument(models.Model):
     property = models.ForeignKey(
         Property,
         on_delete=models.CASCADE,
-        related_name='documents_property'
+        related_name='documents'
     )
-    document = models.FileField(upload_to='property/documents/')
-
+    file = models.FileField(upload_to='property/documents/')
 
 
 class Review(models.Model):
+
     author = models.ForeignKey(
         UserProfile,
         on_delete=models.CASCADE,

@@ -1,0 +1,11 @@
+asgiref==3.11.0
+Django==5.2.9
+django-allauth==65.14.0
+django-modeltranslation==0.19.19
+django-phonenumber-field==8.4.0
+djangorestframework==3.16.1
+phonenumbers==9.0.22
+pillow==12.1.0
+python-dotenv==1.2.1
+sqlparse==0.5.5
+typing_extensions==4.15.0
