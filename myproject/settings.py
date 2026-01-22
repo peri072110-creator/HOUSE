@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     'rest_framework',
     'house_app',
-    'rest_framework',
+
     'django_filters',
 
 
