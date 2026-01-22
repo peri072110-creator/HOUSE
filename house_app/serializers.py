@@ -76,6 +76,7 @@ class PropertyCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context.get('request')
         validated_data['seller'] = request.user
+
         return super().create(validated_data)
 
 

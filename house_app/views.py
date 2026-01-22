@@ -80,10 +80,7 @@ class PropertyViewSet(viewsets.ModelViewSet):
     ]
 
     filterset_fields = [
-        'region',
-        'city',
-        'district',
-        'property_type'
+        'region',  'city',  'district','property_type'
     ]
 
     search_fields = [
