@@ -14,11 +14,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = (
-            'id',
-            'username',
-            'email',
-            'phone_number',
-            'role',
+            'id', 'username',  'email', 'phone_number','role',
         )
 
 class DistrictSerializer(serializers.ModelSerializer):
@@ -63,24 +59,9 @@ class PropertySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Property
-        fields = (
-            'id',
-            'title',
-            'description',
-            'property_type',
-            'region',
-            'city',
-            'district',
-            'address',
-            'area',
-            'price',
-            'rooms',
-            'floor',
-            'total_floors',
-            'seller',
-            'images',
-            'documents',
-            'created_at',
+        fields = ('id', 'title', 'description', 'property_type', 'region', 'city',
+                 'district','address', 'area', 'price',  'rooms','floor','total_floors',
+                  'seller', 'images', 'documents', 'created_at',
         )
 
 
@@ -88,18 +69,8 @@ class PropertyCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Property
         fields = (
-            'title',
-            'description',
-            'property_type',
-            'region',
-            'city',
-            'district',
-            'address',
-            'area',
-            'price',
-            'rooms',
-            'floor',
-            'total_floors',
+            'title', 'description','property_type', 'region', 'city','district',
+            'address','area', 'price', 'rooms', 'floor', 'total_floors',
         )
 
     def create(self, validated_data):
@@ -115,10 +86,5 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = (
-            'id',
-            'author',
-            'seller',
-            'rating',
-            'comment',
-            'created_at',
+            'id', 'author', 'seller', 'rating', 'comment', 'created_at',
         )
