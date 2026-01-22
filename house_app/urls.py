@@ -1,10 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
+
 from .views import (
     RegisterView,
     LoginView,
     LogoutView,
     UserListAPIView,
+    UserMeAPIView,
     RegionViewSet,
     CityViewSet,
     DistrictViewSet,
@@ -28,7 +31,8 @@ urlpatterns = [
     path('auth/logout/', LogoutView.as_view(), name='logout'),
 
 
-    path('users/', UserListAPIView.as_view(), name='user-detail'),
+    path('users/', UserListAPIView.as_view(), name='user-list'),
+    path('users/me/', UserMeAPIView.as_view()),
 
 
     path('properties/', PropertyListView.as_view(), name='property-list'),
