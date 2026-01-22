@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import (
@@ -12,7 +11,6 @@ from .models import (
     PropertyDocument,
     Review
 )
-
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,7 +43,6 @@ class UserLoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Неверные учетные данные")
-
     def to_representation(self, instance):
         refresh = RefreshToken.for_user(instance)
         return {
@@ -99,11 +96,9 @@ class PropertyDocumentSerializer(serializers.ModelSerializer):
 class PropertySerializer(serializers.ModelSerializer):
     images = PropertyImageSerializer(many=True, read_only=True)
     documents = PropertyDocumentSerializer(many=True, read_only=True)
-
     region = serializers.StringRelatedField()
     city = serializers.StringRelatedField()
     district = serializers.StringRelatedField()
-
     seller = UserProfileSerializer(read_only=True)
 
     class Meta:
