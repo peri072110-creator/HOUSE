@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     "phonenumber_field",
     'rest_framework',
     'house_app',
+    'rest_framework',
+    'django_filters',
+
 
 ]
 
@@ -125,3 +128,6 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'house_app.UserProfile'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
