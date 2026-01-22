@@ -1,4 +1,4 @@
-
+from rest_framework import filters
 from rest_framework import viewsets, permissions
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
@@ -26,6 +26,7 @@ class UserProfileViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
+    search_fields = ['username',]
 
 
 class RegionViewSet(viewsets.ReadOnlyModelViewSet):
@@ -38,6 +39,7 @@ class RegionViewSet(viewsets.ReadOnlyModelViewSet):
 class CityViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CitySerializer
     permission_classes = [permissions.AllowAny]
+    search_fields = ['name',]
 
     def get_queryset(self):
         queryset = City.objects.all()
