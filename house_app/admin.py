@@ -1,6 +1,17 @@
 from django.contrib import admin
-from .models import *
 from modeltranslation.admin import TranslationAdmin
+from .models import (
+    UserProfile,
+    Region,
+    City,
+    District,
+    Property,
+    PropertyImage,
+    PropertyDocument,
+    Review
+)
+
+
 class PropertyImageInline(admin.TabularInline):
     model = PropertyImage
     extra = 1
@@ -9,9 +20,10 @@ class PropertyDocumentInline(admin.TabularInline):
     model = PropertyDocument
     extra = 1
 
+
 @admin.register(Property)
 class PropertyAdmin(TranslationAdmin):
-    inlines = [PropertyImageInline , PropertyDocumentInline ]
+    inlines = [PropertyImageInline, PropertyDocumentInline]
 
     class Media:
         js = (
@@ -22,6 +34,7 @@ class PropertyAdmin(TranslationAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
+
 
 admin.site.register(UserProfile)
 admin.site.register(Region)

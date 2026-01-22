@@ -1,3 +1,5 @@
+from django.conf.urls.i18n import i18n_patterns
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -11,7 +13,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+from rest_framework_simplejwt.views import TokenBlacklistView
 schema_view = get_schema_view(
     openapi.Info(
         title="HOUSE API",
@@ -22,21 +24,17 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-urlpatterns = [
+
+
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('house_app.urls')),
-
-    # JWT
+    path('accounts/', include('allauth.urls')),
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/blacklist/', TokenBlacklistView.as_view(), name='token_blacklist'),
+)
 
-    # API
-    path('api/', include('house_app.urls')),
 
-    # Swagger
-    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc'),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
