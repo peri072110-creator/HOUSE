@@ -65,10 +65,7 @@ class DistrictViewSet(viewsets.ReadOnlyModelViewSet):
 
 class PropertyViewSet(viewsets.ModelViewSet):
     queryset = Property.objects.select_related(
-        'region',
-        'city',
-        'district',
-        'seller'
+        'region', 'city', 'district', 'seller'
     ).prefetch_related(
         'images',
         'documents'
