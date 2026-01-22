@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     "phonenumber_field",
     'rest_framework',
     'house_app',
-
     'django_filters',
+    'rest_framework_swagger',
+    'drf_yasg',
 
 
 ]
@@ -130,6 +131,5 @@ AUTH_USER_MODEL = 'house_app.UserProfile'
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.StandardResultsSetPagination'
 }
 
